@@ -4,7 +4,7 @@
   "entryType": "http",
   "id": "a89a6b80-c85c-41f5-b1a3-0bd320095ced",
   "rank": "a0",
-  "url": "https://backend.requestly.com/echo3",
+  "url": "https://backend.requestly.com/echo",
   "method": "GET",
   "contentType": "none"
 }
