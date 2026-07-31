@@ -40,19 +40,6 @@ Whenever multiple valid approaches exist, explain why different engineering orga
 
 <INSERT TOPIC HERE>
 
-Examples:
-
-- HTTP
-- REST
-- GraphQL
-- Authentication
-- API Testing
-- CI/CD
-- Shift Left Testing
-- Platform Engineering
-- Customer Workflows
-- Customer Problems
-
 ---
 
 # Response Structure
