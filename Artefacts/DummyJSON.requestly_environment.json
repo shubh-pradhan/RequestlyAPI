@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "exportedAt": "2026-07-20T12:52:00.218Z",
+    "exportedUsing": "Requestly API Client"
+  },
+  "environments": [
+    {
+      "id": "a7315794-f197-4268-a3bb-3631193a52ff",
+      "name": "DummyJSON",
+      "isGlobal": false,
+      "variables": {
+        "baseUrl": {
+          "id": "59aad427-69cd-44e8-8ffd-448baaa7f9ec",
+          "syncValue": "https://dummyjson.com",
+          "type": "string",
+          "isEnabled": true,
+          "isPersisted": true,
+          "rank": "a0",
+          "createdAt": "2026-06-22T04:36:33.193Z",
+          "updatedAt": "2026-07-20T05:30:17.248Z",
+          "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+          "updatedBy": "424ff295-a9df-4cdd-8631-8482f0861117"
+        },
+        "authToken": {
+          "id": "b2b21558-ff17-4896-9a54-9e06908eab58",
+          "syncValue": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3ODIxMzYwNDIsImV4cCI6MTc4MjEzOTY0Mn0.d9B2gDsfZF93iRmDGdebdWbC5PgqWXG1DYY9ZJLUdBw",
+          "type": "string",
+          "isEnabled": true,
+          "isPersisted": true,
+          "rank": "a1",
+          "createdAt": "2026-06-22T13:47:23.025Z",
+          "updatedAt": "2026-07-20T05:30:17.248Z",
+          "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+          "updatedBy": "424ff295-a9df-4cdd-8631-8482f0861117"
+        },
+        "userId": {
+          "id": "9a0f9b41-9781-451d-8cda-e81ac9722711",
+          "syncValue": "1",
+          "type": "string",
+          "isEnabled": true,
+          "isPersisted": true,
+          "rank": "a2",
+          "createdAt": "2026-06-22T13:47:23.025Z",
+          "updatedAt": "2026-07-20T05:30:17.248Z",
+          "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+          "updatedBy": "424ff295-a9df-4cdd-8631-8482f0861117"
+        },
+        "cartId": {
+          "id": "844b2a11-2066-4b6d-9019-a50074a694e7",
+          "syncValue": "209",
+          "type": "string",
+          "isEnabled": true,
+          "isPersisted": true,
+          "rank": "a3",
+          "createdAt": "2026-06-22T13:47:40.732Z",
+          "updatedAt": "2026-07-20T05:30:17.248Z",
+          "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+          "updatedBy": "424ff295-a9df-4cdd-8631-8482f0861117"
+        },
+        "myArr": {
+          "id": "03405f2b-7e86-48bd-80d8-e643f7b8a799",
+          "syncValue": "1, 2, 3",
+          "type": "string",
+          "isEnabled": true,
+          "isPersisted": true,
+          "rank": "hmrl0tpav",
+          "createdAt": "2026-07-14T19:09:53.933Z",
+          "updatedAt": "2026-07-20T05:30:17.248Z",
+          "createdBy": "424ff295-a9df-4cdd-8631-8482f0861117",
+          "updatedBy": "424ff295-a9df-4cdd-8631-8482f0861117"
+        }
+      }
+    }
+  ]
+}
