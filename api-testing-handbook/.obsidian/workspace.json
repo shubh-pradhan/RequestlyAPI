@@ -12,10 +12,14 @@
             "id": "60f3a3fb8f0bcd0d",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "ReadMe.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ReadMe"
             }
           },
           {
@@ -38,12 +42,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "API Fundamentals/HTTP.md",
+                "file": "API Fundamentals/REST.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HTTP"
+              "title": "REST"
             }
           },
           {
@@ -60,8 +64,7 @@
               "title": "Prompt 1 - Concept Learning"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "e6cbe48440f46fb0",
@@ -246,11 +249,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "ccec449e379a9691",
+  "active": "60f3a3fb8f0bcd0d",
   "lastOpenFiles": [
-    "ReadMe.md",
-    "API Fundamentals/HTTP.md",
     "API Fundamentals/REST.md",
+    "Backend Engineer.md",
+    "API Fundamentals/HTTP.md",
+    "ReadMe.md",
     "API Fundamentals",
     "Scenario Analysis.md",
     "Templates/Prompt 1 - Concept Learning.md",
