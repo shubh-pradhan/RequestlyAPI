@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "exportedAt": "2026-08-19T12:04:56.018Z",
+    "exportedUsing": "Requestly API Client"
+  },
+  "environments": [
+    {
+      "id": "2ed4e543-1a86-43c8-8ac0-b193b44bab57",
+      "name": "Staging",
+      "isGlobal": false,
+      "variables": {
+        "baseurl": {
+          "id": "48590148-0335-4d91-a06e-6d6d480d20c4",
+          "syncValue": "https://playground.requestly.com",
+          "type": "string",
+          "isEnabled": true,
+          "isPersisted": true,
+          "rank": "hms3f8odq",
+          "createdAt": "2026-08-13T08:44:32.762Z",
+          "updatedAt": "2026-08-13T08:44:32.762Z",
+          "createdBy": "144a3db5-1e4d-4921-b108-42484dfa2496",
+          "updatedBy": "144a3db5-1e4d-4921-b108-42484dfa2496"
+        }
+      }
+    }
+  ]
+}

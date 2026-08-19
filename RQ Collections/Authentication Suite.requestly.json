@@ -1,0 +1,599 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "exportedAt": "2026-08-19T12:03:39.692Z",
+    "exportedUsing": "Requestly API Client"
+  },
+  "records": [
+    {
+      "id": "e64dda4a-32c1-48ce-846b-dc91af031125",
+      "name": "08 NTLM",
+      "type": "api",
+      "parentId": "491dacd1-0d8b-4b34-be26-0314482dd176",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/ntlm-resource",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "ntlm",
+          "username": "testuser",
+          "password": "testpass",
+          "domain": "PLAYGROUND",
+          "workstation": "RQ-PLAYGROUND"
+        }
+      },
+      "rank": "a7"
+    },
+    {
+      "id": "cbd0aca3-b594-4cbe-b143-e4f6139b8492",
+      "name": "03 Bearer Token",
+      "type": "api",
+      "parentId": "5b0989fb-01bb-456d-b805-fe3d8d26cfa6",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/bearer-data",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "bearer_token",
+          "token": "rq_static_token",
+          "headerPrefix": "Bearer"
+        }
+      },
+      "rank": "a3"
+    },
+    {
+      "id": "bf8b42ab-39bf-40f5-806a-4b8d4c75f8e2",
+      "name": "06 Oauth1",
+      "type": "api",
+      "parentId": "3efcba66-587e-4eba-ac6c-cca26c251b50",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/oauth1-resource",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "raw",
+            "rawContentType": "text/plain"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "oauth_1",
+          "consumerKey": "RKCGzna7bv9YD57c",
+          "consumerSecret": "D+EdQ-gs$-%@2Nu7",
+          "accessToken": "rq_demo_oauth1_token",
+          "tokenSecret": "rq_demo_oauth1_token_secret",
+          "signing": {
+            "signatureMethod": "HMAC-SHA1"
+          },
+          "parameterTransmission": "header",
+          "includeBodyHash": false,
+          "addEmptyParametersToSignature": false,
+          "encodeOAuthParametersInHeader": false
+        }
+      },
+      "rank": "a5V"
+    },
+    {
+      "id": "b1e96e61-d304-4c06-a17f-bc9bd06ebd48",
+      "name": "10 AWS V4",
+      "type": "api",
+      "parentId": "c1abe251-4a9b-48eb-84c1-4f23de880941",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/aws-resource",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "aws_sigv4",
+          "signatureVersion": "v4",
+          "accessKeyId": "AKIARQPLAYGROUND123",
+          "secretAccessKey": "{{vault:aws_secret_access_key}}",
+          "sessionToken": "",
+          "region": "us-east-1",
+          "service": "execute-api",
+          "profileName": "",
+          "attachment": "live_request"
+        }
+      },
+      "rank": "a9"
+    },
+    {
+      "id": "972b2943-3059-44c0-940f-1592e07a0d59",
+      "name": "04 API Key Test",
+      "type": "api",
+      "parentId": "0ba6e80e-71e3-4c37-8d6b-1011f929ecb4",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/api-key",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [
+            {
+              "id": 1784300110234013,
+              "key": "",
+              "value": "{{vault:key}}",
+              "isEnabled": true,
+              "description": ""
+            }
+          ],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "api_key",
+          "key": "X-API-Key",
+          "value": "rq_demo_key",
+          "placement": "header"
+        }
+      },
+      "rank": "a4"
+    },
+    {
+      "id": "92e62bc1-66e9-4f65-bb14-2043b29a604a",
+      "name": "09 JWT",
+      "type": "api",
+      "parentId": "f1d1484f-e70d-4251-affd-607ba1c575d2",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/jwt/validate",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [
+            {
+              "id": 1,
+              "key": "algorithm",
+              "value": "HS256",
+              "isEnabled": true
+            }
+          ],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "jwt_bearer",
+          "algorithm": "HS256",
+          "signingKey": "rq-playground-hs256-demo-secret-key-do-not-use-in-production",
+          "secretBase64Encoded": false,
+          "payload": "{\"sub\":\"demo-user\",\"iss\":\"requestly-playground\",\"aud\":\"requestly-playground\"}",
+          "jwtHeader": "{\"alg\":\"HS256\",\"typ\":\"JWT\"}",
+          "attachment": {
+            "placement": "header",
+            "headerName": "Authorization",
+            "prefix": "Bearer"
+          }
+        }
+      },
+      "rank": "a8"
+    },
+    {
+      "id": "81f09317-0739-4e0d-961c-3c02b0d8ef14",
+      "name": "02 Basic Auth",
+      "type": "api",
+      "parentId": "1973eacd-b7c8-4c51-a3b6-3a7a5a37c4dd",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/basic-auth/admin/admin",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "basic_auth",
+          "username": "admin",
+          "password": "admin"
+        }
+      },
+      "rank": "a2"
+    },
+    {
+      "id": "58354c0a-ecd8-4c98-9720-8563b6fecfce",
+      "name": "05 Digest Auth",
+      "type": "api",
+      "parentId": "cbb04a52-c356-4695-9665-ff090e904b9d",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/digest-auth/auth/admin/admin",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "digest_auth",
+          "username": "admin",
+          "password": "admin",
+          "algorithm": "MD5",
+          "qop": "auth",
+          "realm": "",
+          "nonce": "",
+          "nonceCount": "",
+          "clientNonce": "",
+          "opaque": "",
+          "disableRetry": false
+        }
+      },
+      "rank": "a5"
+    },
+    {
+      "id": "45475aff-715d-4e70-8306-33c3e3baab6e",
+      "name": "11 Hawk",
+      "type": "api",
+      "parentId": "2a4bbe45-58b4-4412-97da-1bd1697a0f7e",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/hawk-resource",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "hawk",
+          "authId": "rq_hawk_id",
+          "authKey": "rq_hawk_key",
+          "algorithm": "sha256",
+          "user": "",
+          "nonce": "",
+          "timestamp": "",
+          "ext": "",
+          "app": "",
+          "dlg": "",
+          "includePayloadHash": false
+        }
+      },
+      "rank": "aA"
+    },
+    {
+      "id": "07cefe11-44b8-4a2c-8a5d-b3c19d3b2c5d",
+      "name": "07 OAuth2",
+      "type": "api",
+      "parentId": "1a000f6a-1689-485c-a5df-58f6089cf6ae",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url}}/oauth2-private",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "oauth_2",
+          "config": {
+            "grantType": "authorization_code",
+            "authUrl": "https://playground.requestly.com/oauth2/authorize",
+            "tokenUrl": "https://playground.requestly.com/oauth2/token",
+            "callbackUrl": "https://oauth.rqstag.com/callback",
+            "clientId": "rq_demo_confidential_client",
+            "clientSecret": "rq_demo_client_secret",
+            "scope": "read",
+            "mode": "embedded"
+          },
+          "headerPrefix": "Bearer",
+          "tokenSelection": "access",
+          "customAuthParams": [],
+          "customTokenParams": [],
+          "customRefreshParams": []
+        }
+      },
+      "rank": "a6"
+    },
+    {
+      "id": "073c8f5a-6294-4b38-84be-89e4f81c9d66",
+      "name": "01 No Auth",
+      "type": "api",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "https://playground.requestly.com/",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a1"
+    },
+    {
+      "id": "fc175435-afa7-4540-bc8f-73c02587c6d0",
+      "name": "admin",
+      "type": "collection",
+      "parentId": "a9baff82-2b91-4bf5-bb08-f0b20fe6ffb4",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "f1d1484f-e70d-4251-affd-607ba1c575d2",
+      "name": "validate",
+      "type": "collection",
+      "parentId": "9e2ec2a3-6696-4b90-9030-9b19639e4f0e",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "cbb04a52-c356-4695-9665-ff090e904b9d",
+      "name": "admin",
+      "type": "collection",
+      "parentId": "fc175435-afa7-4540-bc8f-73c02587c6d0",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "c1abe251-4a9b-48eb-84c1-4f23de880941",
+      "name": "aws-resource",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "badca433-3068-4653-9048-b025d011ef10",
+      "name": "admin",
+      "type": "collection",
+      "parentId": "707212aa-81fb-4939-8745-842873bfef20",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "a9baff82-2b91-4bf5-bb08-f0b20fe6ffb4",
+      "name": "auth",
+      "type": "collection",
+      "parentId": "4b163094-aa8e-4891-847f-8c76a466ba83",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "9e2ec2a3-6696-4b90-9030-9b19639e4f0e",
+      "name": "jwt",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "707212aa-81fb-4939-8745-842873bfef20",
+      "name": "basic-auth",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "5b0989fb-01bb-456d-b805-fe3d8d26cfa6",
+      "name": "bearer-data",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "4b163094-aa8e-4891-847f-8c76a466ba83",
+      "name": "digest-auth",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "491dacd1-0d8b-4b34-be26-0314482dd176",
+      "name": "ntlm-resource",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "3efcba66-587e-4eba-ac6c-cca26c251b50",
+      "name": "oauth1-resource",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "2a4bbe45-58b4-4412-97da-1bd1697a0f7e",
+      "name": "hawk-resource",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "1a000f6a-1689-485c-a5df-58f6089cf6ae",
+      "name": "oauth2-private",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "1973eacd-b7c8-4c51-a3b6-3a7a5a37c4dd",
+      "name": "admin",
+      "type": "collection",
+      "parentId": "badca433-3068-4653-9048-b025d011ef10",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "0ba6e80e-71e3-4c37-8d6b-1011f929ecb4",
+      "name": "api-key",
+      "type": "collection",
+      "parentId": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": null
+    },
+    {
+      "id": "df5ffd31-3b8b-4d32-8c72-7f3988120b31",
+      "name": "Authentication Suite",
+      "description": "Exported from Requestly API Client",
+      "type": "collection",
+      "parentId": null,
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a0"
+    }
+  ],
+  "environments": [],
+  "packages": []
+}

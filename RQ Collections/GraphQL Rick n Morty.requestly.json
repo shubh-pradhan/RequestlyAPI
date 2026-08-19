@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "exportedAt": "2026-08-19T12:04:15.290Z",
+    "exportedUsing": "Requestly API Client"
+  },
+  "records": [
+    {
+      "id": "804c5e5d-05fe-4f81-ab56-ea8c9296b137",
+      "name": "List Episodes [with Characters]",
+      "type": "api",
+      "parentId": "23e6991e-04ce-4d6c-bd1b-1f323031048f",
+      "deleted": false,
+      "data": {
+        "type": "graphql",
+        "request": {
+          "url": "https://rickandmortyapi.com/graphql",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "query": "query MyQuery {\n  episodes {\n    results {\n      characters {\n        created\n        name\n        species\n        status\n        type\n      }\n    }\n  }\n}"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a0V"
+    },
+    {
+      "id": "d89ae33f-59d0-4187-9790-18361841cd58",
+      "name": "Get Character by ID [with Episodes]",
+      "type": "api",
+      "parentId": "23e6991e-04ce-4d6c-bd1b-1f323031048f",
+      "deleted": false,
+      "data": {
+        "type": "graphql",
+        "request": {
+          "url": "https://rickandmortyapi.com/graphql",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "query": "query MyQuery {\n  character(id: \"21\") {\n    created\n    episode {\n      air_date\n      episode\n    }\n  }\n}"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a0"
+    },
+    {
+      "id": "847f1d7b-ca01-4616-a192-ba0c7012b99a",
+      "name": "2 queries",
+      "type": "api",
+      "parentId": "23e6991e-04ce-4d6c-bd1b-1f323031048f",
+      "deleted": false,
+      "data": {
+        "type": "graphql",
+        "request": {
+          "url": "https://rickandmortyapi.com/graphql",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "query": "query MyQuery {\n  episodes {\n    results {\n      characters {\n        created\n        name\n        species\n        status\n        type\n      }\n    }\n  }\n}\n\nquery MyQuery2 {\n  character(id: \"21\") {\n    created\n    episode {\n      air_date\n      episode\n    }\n  }\n}"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a1"
+    },
+    {
+      "id": "23e6991e-04ce-4d6c-bd1b-1f323031048f",
+      "name": "GraphQL Rick n Morty",
+      "description": "",
+      "type": "collection",
+      "parentId": null,
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a4"
+    }
+  ],
+  "environments": [],
+  "packages": []
+}

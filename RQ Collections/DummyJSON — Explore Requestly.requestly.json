@@ -1,0 +1,709 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "exportedAt": "2026-08-19T12:02:46.379Z",
+    "exportedUsing": "Requestly API Client"
+  },
+  "records": [
+    {
+      "id": "f4a4fc71-1486-4f5f-af63-94e9e96e6a44",
+      "name": "List Users",
+      "type": "api",
+      "parentId": "b8f359a0-257d-4b64-aa35-8e3140069a4e",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/users?limit=5&select=firstName,lastName,email",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [
+            {
+              "id": 0,
+              "key": "limit",
+              "value": "5",
+              "isEnabled": true
+            },
+            {
+              "id": 1,
+              "key": "select",
+              "value": "firstName,lastName,email",
+              "isEnabled": true
+            }
+          ],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        }
+      },
+      "rank": "a0"
+    },
+    {
+      "id": "e6f7d9a2-f03e-41a7-9b0b-56e7594a9d77",
+      "name": "Search Products",
+      "type": "api",
+      "parentId": "b6286716-f189-4c90-9a51-d8453654c042",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/products/search?q=phone",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [
+            {
+              "id": 0,
+              "key": "q",
+              "value": "phone",
+              "isEnabled": true
+            }
+          ],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"search returns results\", () => {\n  rq.response.to.be.ok;\n  const data = rq.response.json();\n  rq.expect(data.products).to.be.an(\"array\");\n  rq.expect(data.total).to.be.above(0);\n});"
+        }
+      },
+      "rank": "a2"
+    },
+    {
+      "id": "e65b0e1c-b356-4193-89e0-2afde2608599",
+      "name": "Bulk Create User",
+      "type": "api",
+      "parentId": "a7f67c23-b6f6-4a97-a3b8-db60df4f308d",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/users/add",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "raw",
+            "raw": "{\n  \"firstName\": \"{{firstName}}\",\n  \"lastName\": \"{{lastName}}\",\n  \"age\": {{age}}\n}",
+            "rawContentType": "application/json"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"user created with CSV data\", () => {\n  rq.expect(rq.response.code).to.be.within(200, 299);\n  const data = rq.response.json();\n  rq.expect(data.firstName).to.equal(rq.iterationData.get(\"firstName\"));\n  rq.expect(data.lastName).to.equal(rq.iterationData.get(\"lastName\"));\n  rq.expect(data.age).to.equal(Number(rq.iterationData.get(\"age\")));\n});\n"
+        }
+      },
+      "rank": "a1"
+    },
+    {
+      "id": "b1b31a48-61e4-4cb0-9dc1-8383880a5364",
+      "name": "Product by ID",
+      "type": "api",
+      "parentId": "b6286716-f189-4c90-9a51-d8453654c042",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/products/:id",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [
+            {
+              "key": "id",
+              "value": "1",
+              "description": "Product ID"
+            }
+          ],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"returns product details\", () => {\n  rq.response.to.have.status(200);\n  const data = rq.response.json();\n  rq.expect(data).to.have.property(\"title\");\n  rq.expect(data).to.have.property(\"price\");\n  rq.expect(data.rating).to.be.above(0);\n});"
+        }
+      },
+      "rank": "a1"
+    },
+    {
+      "id": "afddad1c-b6e6-43cc-bf72-419d2e9b6ccc",
+      "name": "All Products",
+      "type": "api",
+      "parentId": "b6286716-f189-4c90-9a51-d8453654c042",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/products?limit=5&select=title,price,rating",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [
+            {
+              "id": 0,
+              "key": "limit",
+              "value": "5",
+              "isEnabled": true
+            },
+            {
+              "id": 1,
+              "key": "select",
+              "value": "title,price,rating",
+              "isEnabled": true
+            }
+          ],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"returns paginated products\", () => {\n  rq.response.to.have.status(200);\n  const data = rq.response.json();\n  rq.expect(data.products).to.be.an(\"array\");\n  rq.expect(data.products.length).to.equal(5);\n  rq.expect(data).to.have.property(\"total\");\n});\n\nrq.test(\"responds within 2s\", () => {\n  rq.expect(rq.response.responseTime).to.be.below(2000);\n});"
+        }
+      },
+      "rank": "a0"
+    },
+    {
+      "id": "a92b46ad-c834-4a5b-94c7-1864e4d9ff5a",
+      "name": "Bulk Product Lookup",
+      "type": "api",
+      "parentId": "a7f67c23-b6f6-4a97-a3b8-db60df4f308d",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/products/{{productId}}",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"product matches CSV row\", () => {\n  rq.expect(rq.response.code).to.equal(200);\n  const data = rq.response.json();\n  rq.expect(String(data.id)).to.equal(String(rq.iterationData.get(\"productId\")));\n  rq.expect(data).to.have.property(\"title\");\n});\n"
+        }
+      },
+      "rank": "a0"
+    },
+    {
+      "id": "86a3e88b-881b-40fb-83c2-2aff4ec0b79c",
+      "name": "Get Cart",
+      "type": "api",
+      "parentId": "20eb1755-8f28-4813-9db9-ff03d19d9d01",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/carts/{{cartId}}",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"returns cart details\", () => {\n  rq.response.to.have.status(200);\n  rq.response.to.have.jsonBody(\"products\");\n  const data = rq.response.json();\n  rq.expect(data.totalProducts).to.be.above(0);\n});"
+        }
+      },
+      "rank": "ZzV"
+    },
+    {
+      "id": "834ed387-426e-4754-bac5-7b34cae83183",
+      "name": "Add User",
+      "type": "api",
+      "parentId": "b8f359a0-257d-4b64-aa35-8e3140069a4e",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/users/add",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "json",
+            "raw": "{\n  \"firstName\": \"Alex\",\n  \"lastName\": \"Morgan\",\n  \"age\": 28\n}",
+            "rawContentType": "application/json"
+          },
+          "contentType": "json"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"user is created with ID\", () => {\n  rq.response.to.be.ok;\n  const data = rq.response.json();\n  rq.expect(data).to.have.property(\"id\");\n  rq.expect(data.firstName).to.equal(\"Alex\");\n  rq.expect(data.age).to.equal(28);\n});"
+        }
+      },
+      "rank": "a3"
+    },
+    {
+      "id": "63c14588-cb2e-4b0d-841f-033c2444dc5c",
+      "name": "Delete Cart",
+      "type": "api",
+      "parentId": "20eb1755-8f28-4813-9db9-ff03d19d9d01",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/carts/{{cartId}}",
+          "method": "DELETE",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"cart is deleted\", () => {\n  rq.response.to.have.status(200);\n  const data = rq.response.json();\n  rq.expect(data.isDeleted).to.equal(true);\n  rq.expect(data).to.have.property(\"deletedOn\");\n});"
+        }
+      },
+      "rank": "a3"
+    },
+    {
+      "id": "5a961757-1d8a-4538-a934-3b9e936546d3",
+      "name": "Update Cart",
+      "type": "api",
+      "parentId": "20eb1755-8f28-4813-9db9-ff03d19d9d01",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/carts/{{cartId}}",
+          "method": "PUT",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "json",
+            "raw": "{\n  \"merge\": true,\n  \"products\": [\n    { \"id\": 1, \"quantity\": 3 }\n  ]\n}",
+            "rawContentType": "application/json"
+          },
+          "contentType": "json"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"cart is updated\", () => {\n  rq.response.to.be.ok;\n  rq.response.to.have.header(\"content-type\");\n  const data = rq.response.json();\n  rq.expect(data).to.have.property(\"products\");\n  rq.expect(data).to.have.property(\"totalProducts\");\n});"
+        }
+      },
+      "rank": "a4"
+    },
+    {
+      "id": "5188b870-3ac3-4b67-939f-01662973b63b",
+      "name": "Update User",
+      "type": "api",
+      "parentId": "b8f359a0-257d-4b64-aa35-8e3140069a4e",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/users/:id",
+          "method": "PUT",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [
+            {
+              "key": "id",
+              "value": "1",
+              "description": "User ID"
+            }
+          ],
+          "body": {
+            "contentType": "json",
+            "raw": "{\n  \"lastName\": \"Smith\"\n}",
+            "rawContentType": "application/json"
+          },
+          "contentType": "json"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"user is updated\", () => {\n  rq.response.to.have.status(200);\n  rq.response.to.have.jsonBody(\"lastName\", \"Smith\");\n});"
+        }
+      },
+      "rank": "a4"
+    },
+    {
+      "id": "4a207a60-ea52-4a2c-9aba-c93e11716f47",
+      "name": "Login",
+      "type": "api",
+      "parentId": "20eb1755-8f28-4813-9db9-ff03d19d9d01",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/auth/login",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "json",
+            "raw": "{\n  \"username\": \"emilys\",\n  \"password\": \"emilyspass\"\n}",
+            "rawContentType": "application/json"
+          },
+          "contentType": "json"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "const data = rq.response.json();\n\nrq.environment.set(\"authToken\", data.accessToken);\nrq.environment.set(\"userId\", String(data.id));\n\nrq.test(\"authenticated successfully\", () => {\n  rq.response.to.have.status(200);\n  rq.expect(data.accessToken).to.be.a(\"string\");\n  rq.expect(data.refreshToken).to.be.a(\"string\");\n});"
+        }
+      },
+      "rank": "Zz"
+    },
+    {
+      "id": "097b4ce1-b2df-4c60-81a8-b2fa4892b598",
+      "name": "Add Cart",
+      "type": "api",
+      "parentId": "20eb1755-8f28-4813-9db9-ff03d19d9d01",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/carts/add",
+          "method": "POST",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [],
+          "body": {
+            "contentType": "json",
+            "raw": "{\n  \"userId\": {{userId}},\n  \"products\": [\n    { \"id\": 144, \"quantity\": 2 },\n    { \"id\": 98, \"quantity\": 1 }\n  ]\n}",
+            "rawContentType": "application/json"
+          },
+          "contentType": "json"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "const data = rq.response.json();\n\nrq.environment.set(\"cartId\", String(data.id));\n\nrq.test(\"cart created with products\", () => {\n  rq.response.to.be.ok;\n  rq.expect(data.products).to.be.an(\"array\");\n  rq.expect(data.products.length).to.be.above(0);\n});"
+        }
+      },
+      "rank": "a0"
+    },
+    {
+      "id": "077eac27-f4ee-4a42-968a-751a3d8d76da",
+      "name": "User by ID",
+      "type": "api",
+      "parentId": "b8f359a0-257d-4b64-aa35-8e3140069a4e",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/users/:id",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [],
+          "pathVariables": [
+            {
+              "key": "id",
+              "value": "1",
+              "description": "User ID"
+            }
+          ],
+          "body": {
+            "contentType": "none"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "postResponse": "rq.test(\"returns user profile\", () => {\n  rq.response.to.be.ok;\n  const data = rq.response.json();\n  rq.expect(data).to.have.property(\"firstName\");\n  rq.expect(data).to.have.property(\"email\");\n});"
+        }
+      },
+      "rank": "a2"
+    },
+    {
+      "id": "b8f359a0-257d-4b64-aa35-8e3140069a4e",
+      "name": "Users",
+      "description": "Basic CRUD on users — list, view, create, and update. No auth needed.",
+      "type": "collection",
+      "parentId": "af47685d-599c-4baa-b76c-00a109ed1027",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a0"
+    },
+    {
+      "id": "b6286716-f189-4c90-9a51-d8453654c042",
+      "name": "Products",
+      "description": "No auth needed. Browse the catalog, search by keyword, or look up a single product.",
+      "type": "collection",
+      "parentId": "af47685d-599c-4baa-b76c-00a109ed1027",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a1"
+    },
+    {
+      "id": "af47685d-599c-4baa-b76c-00a109ed1027",
+      "name": "DummyJSON — Explore Requestly",
+      "description": "",
+      "type": "collection",
+      "parentId": null,
+      "deleted": false,
+      "data": {
+        "variables": {
+          "authToken": {
+            "id": "0f38c0e9-3c0f-4652-842e-0de0361d0c33",
+            "syncValue": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3NzY0MTc4MzEsImV4cCI6MTc3NjQyMTQzMX0.M2nV4sjKbPOLU7eL1YU2CajZOLg4ketVvSR4VQR2Hjk",
+            "type": "string",
+            "isEnabled": true,
+            "rank": null,
+            "createdAt": "2026-06-22T04:35:48.971Z",
+            "updatedAt": "2026-06-22T04:40:05.214Z",
+            "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "updatedBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "localValue": "",
+            "isPersisted": true
+          },
+          "userId": {
+            "id": "d9c9f9d8-cc4c-4eb6-9891-f32296fca3ae",
+            "syncValue": "1",
+            "type": "string",
+            "isEnabled": true,
+            "rank": null,
+            "createdAt": "2026-06-22T04:35:48.971Z",
+            "updatedAt": "2026-06-22T04:40:05.214Z",
+            "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "updatedBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "localValue": "",
+            "isPersisted": true
+          },
+          "cartId": {
+            "id": "f069d04d-1c0e-473a-b1c6-96923291d050",
+            "syncValue": "209",
+            "type": "string",
+            "isEnabled": true,
+            "rank": null,
+            "createdAt": "2026-06-22T04:35:48.971Z",
+            "updatedAt": "2026-06-22T04:40:05.214Z",
+            "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "updatedBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "localValue": "",
+            "isPersisted": true
+          }
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "Zz"
+    },
+    {
+      "id": "a7f67c23-b6f6-4a97-a3b8-db60df4f308d",
+      "name": "Data driven testing",
+      "description": "",
+      "type": "collection",
+      "parentId": "af47685d-599c-4baa-b76c-00a109ed1027",
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a3"
+    },
+    {
+      "id": "20eb1755-8f28-4813-9db9-ff03d19d9d01",
+      "name": "Workflow — Cart Lifecycle",
+      "description": "",
+      "type": "collection",
+      "parentId": "af47685d-599c-4baa-b76c-00a109ed1027",
+      "deleted": false,
+      "data": {
+        "variables": {
+          "authToken": {
+            "id": "00f637af-f4c8-4484-b467-4345e46d0285",
+            "syncValue": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJlbWlseXMiLCJlbWFpbCI6ImVtaWx5LmpvaG5zb25AeC5kdW1teWpzb24uY29tIiwiZmlyc3ROYW1lIjoiRW1pbHkiLCJsYXN0TmFtZSI6IkpvaG5zb24iLCJnZW5kZXIiOiJmZW1hbGUiLCJpbWFnZSI6Imh0dHBzOi8vZHVtbXlqc29uLmNvbS9pY29uL2VtaWx5cy8xMjgiLCJpYXQiOjE3NzY0MTc4MzEsImV4cCI6MTc3NjQyMTQzMX0.M2nV4sjKbPOLU7eL1YU2CajZOLg4ketVvSR4VQR2Hjk",
+            "type": "string",
+            "isEnabled": true,
+            "rank": null,
+            "createdAt": "2026-06-22T04:35:48.971Z",
+            "updatedAt": "2026-06-22T04:35:48.971Z",
+            "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "updatedBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "localValue": "",
+            "isPersisted": true
+          },
+          "userId": {
+            "id": "13eaa65b-3cc3-4004-bb43-d79b44c4b450",
+            "syncValue": "1",
+            "type": "string",
+            "isEnabled": true,
+            "rank": null,
+            "createdAt": "2026-06-22T04:35:48.971Z",
+            "updatedAt": "2026-06-22T04:35:48.971Z",
+            "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "updatedBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "localValue": "",
+            "isPersisted": true
+          },
+          "cartId": {
+            "id": "ced9de82-b15b-435b-ac00-1f065c7ab2d5",
+            "syncValue": "209",
+            "type": "string",
+            "isEnabled": true,
+            "rank": null,
+            "createdAt": "2026-06-22T04:35:48.971Z",
+            "updatedAt": "2026-06-22T04:35:48.971Z",
+            "createdBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "updatedBy": "d700060a-e0fd-4659-bc12-a583db0e24ae",
+            "localValue": "",
+            "isPersisted": true
+          }
+        },
+        "auth": {
+          "type": "bearer_token",
+          "token": "{{authToken}}"
+        },
+        "scripts": {
+          "preRequest": "console.log(\"[Workflow] \" + rq.info.requestName + \" — iteration \" + rq.info.iteration);"
+        }
+      },
+      "rank": "a2"
+    },
+    {
+      "id": "bd39b944-9252-49b4-b10e-30ca6f23fbea",
+      "name": "List Users",
+      "type": "example",
+      "parentId": "f4a4fc71-1486-4f5f-af63-94e9e96e6a44",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/users?limit=5&select=firstName,lastName,email",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [
+            {
+              "id": 0,
+              "key": "limit",
+              "value": "5",
+              "isEnabled": true
+            },
+            {
+              "id": 1,
+              "key": "select",
+              "value": "firstName,lastName,email",
+              "isEnabled": true
+            }
+          ],
+          "pathVariables": [],
+          "body": {
+            "contentType": "raw",
+            "raw": "456"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": "// ---- Status & Headers ----\nrq.test(\"Status code is 200\", () => {\n\trq.response.to.have.status(rq.environment.get(\"myArr\").last());\n});\n"
+        }
+      },
+      "rank": "a1"
+    },
+    {
+      "id": "9dfb566d-bb4a-4c7e-beda-9ecca1e91898",
+      "name": "List Users",
+      "type": "example",
+      "parentId": "f4a4fc71-1486-4f5f-af63-94e9e96e6a44",
+      "deleted": false,
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{baseUrl}}/users?limit=5&select=firstName,lastName,email",
+          "method": "GET",
+          "headers": [],
+          "queryParams": [
+            {
+              "id": 0,
+              "key": "limit",
+              "value": "5",
+              "isEnabled": true
+            },
+            {
+              "id": 1,
+              "key": "select",
+              "value": "firstName,lastName,email",
+              "isEnabled": true
+            }
+          ],
+          "pathVariables": [],
+          "body": {
+            "contentType": "raw",
+            "raw": "123"
+          },
+          "contentType": "none"
+        },
+        "auth": {
+          "type": "inherit"
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": "// ---- Status & Headers ----\nrq.test(\"Status code is 200\", () => {\n\trq.response.to.have.status(rq.environment.get(\"myArr\").last());\n});\n"
+        }
+      },
+      "rank": "a0"
+    }
+  ],
+  "environments": [],
+  "packages": []
+}

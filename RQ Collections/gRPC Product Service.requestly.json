@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "version": "1.1.0",
+    "exportedAt": "2026-08-19T12:03:53.242Z",
+    "exportedUsing": "Requestly API Client"
+  },
+  "records": [
+    {
+      "id": "d720fe10-b108-4806-b886-ae543645d54c",
+      "name": "4. LiveUpdates (bidirectional streaming)",
+      "description": "Bidirectional streaming: send and receive at the same time. Invoke to open the stream, then Send a LiveUpdateRequest whenever you like — the server replies with a LiveUpdate (old/new price) for each one. Both directions stay open until you click End streaming.",
+      "type": "api",
+      "parentId": "b1937ea1-e5b3-4347-8892-618647869ccd",
+      "deleted": false,
+      "data": {
+        "type": "grpc",
+        "request": {
+          "url": "grpc://localhost:50051",
+          "methodPath": "/requestly.grpc.DemoService/LiveUpdates",
+          "methodType": "bidi_streaming",
+          "schemaSource": {
+            "kind": "reflection"
+          },
+          "metadata": [],
+          "message": "{\n  \"product_id\": \"prod-001\"\n}"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a3"
+    },
+    {
+      "id": "9ec60161-b14f-40d4-9a5f-fa6dc02a2ff4",
+      "name": "3. SendReviews (client streaming)",
+      "description": "Client streaming: a stream of requests, one summary response. Invoke to open the stream, edit the Review message and click Send for each review you want to push, then click End streaming. The server replies with a single ReviewSummary (count + average rating).",
+      "type": "api",
+      "parentId": "b1937ea1-e5b3-4347-8892-618647869ccd",
+      "deleted": false,
+      "data": {
+        "type": "grpc",
+        "request": {
+          "url": "grpc://localhost:50051",
+          "methodPath": "/requestly.grpc.DemoService/SendReviews",
+          "methodType": "client_streaming",
+          "schemaSource": {
+            "kind": "reflection"
+          },
+          "metadata": [],
+          "message": "{\n  \"product_id\": \"prod-001\",\n  \"author\": \"Ada\",\n  \"content\": \"Works great!\",\n  \"rating\": 5\n}"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a2"
+    },
+    {
+      "id": "7c14f853-9457-44f8-b15d-8fac2c6bd1bd",
+      "name": "2. SearchProducts (server streaming)",
+      "description": "Server streaming: one request, a stream of responses. The server emits one Product at a time. Set max_results and interval_ms to control how many arrive and how fast. Watch them appear in the response panel as they stream in.",
+      "type": "api",
+      "parentId": "b1937ea1-e5b3-4347-8892-618647869ccd",
+      "deleted": false,
+      "data": {
+        "type": "grpc",
+        "request": {
+          "url": "grpc://localhost:50051",
+          "methodPath": "/requestly.grpc.DemoService/SearchProducts",
+          "methodType": "server_streaming",
+          "schemaSource": {
+            "kind": "reflection"
+          },
+          "metadata": [],
+          "message": "{\n  \"query\": \"widget\",\n  \"max_results\": 5,\n  \"interval_ms\": 500\n}"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a1"
+    },
+    {
+      "id": "4d75ee68-835f-4155-bb00-57ef80b8c8fa",
+      "name": "1. GetProduct (unary)",
+      "description": "Unary: one request, one response. Looks up a single product by id. Click Invoke and read the single Product message in the response panel.",
+      "type": "api",
+      "parentId": "b1937ea1-e5b3-4347-8892-618647869ccd",
+      "deleted": false,
+      "data": {
+        "type": "grpc",
+        "request": {
+          "url": "grpc://localhost:50051",
+          "methodPath": "/requestly.grpc.DemoService/LiveUpdates",
+          "methodType": "bidi_streaming",
+          "schemaSource": {
+            "kind": "reflection"
+          },
+          "metadata": [
+            {
+              "id": 1,
+              "key": "x-demo-client",
+              "value": "requestly-grpc-demo",
+              "isEnabled": true,
+              "description": "Example custom metadata (sent as an HTTP/2 header)"
+            }
+          ],
+          "message": "{\n  \"product_id\": \"gamma\"\n}"
+        },
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a0"
+    },
+    {
+      "id": "b1937ea1-e5b3-4347-8892-618647869ccd",
+      "name": "gRPC Product Service",
+      "description": "A walkthrough of all four gRPC method types against the Requestly demo server. Start the server with `pnpm --filter @requestly/grpc-demo-server dev`, then Invoke each request top to bottom. Services are discovered automatically via server reflection.",
+      "type": "collection",
+      "parentId": null,
+      "deleted": false,
+      "data": {
+        "auth": {
+          "type": "inherit"
+        }
+      },
+      "rank": "a3"
+    }
+  ],
+  "environments": [],
+  "packages": []
+}
